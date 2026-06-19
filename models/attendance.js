@@ -1,20 +1,20 @@
 const mongoose = require("mongoose");
 
-const teacherSchema = new mongoose.Schema(
+const attendanceSchema = new mongoose.Schema(
   {
-    teacherName: {
+    studentName: {
       type: String,
       required: true,
     },
 
-    email: {
-      type: String,
+    date: {
+      type: Date,
       required: true,
-      unique: true,
     },
 
-    subject: {
+    status: {
       type: String,
+      enum: ["Present", "Absent"],
       required: true,
     },
   },
@@ -23,4 +23,4 @@ const teacherSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Teacher", teacherSchema);
+module.exports = mongoose.model("Attendance", attendanceSchema);
